@@ -1,0 +1,128 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body %}
+<main>
+      
+    <div class="row inicioPag">
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1>BARBERHOUSE</h1>
+        <p>No tendrás que sufrir por los molestos lapsos</p>
+        <p>de tiempo, toda cita se agendará</p>
+        <p>en su momento.</p>
+
+        <button
+          type="button"
+          class="botonUnete"
+          class="btn btn-info"
+          data-toggle="modal"
+          data-target="#inicioSesion"
+        >
+          UNETE
+        </button>
+      </div>
+    </div>
+
+    <div class="servicios">
+      <h2>ATENCION PERSONALIZADA</h2>
+      
+      <div class="row servicontenedor">
+        <div
+          class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 servicios2"
+        >
+          <h2>SERVICIOS</h2>
+
+          <p>Los servicios incluyen mascarillas puntos negros.</p>
+          <p>
+            Visitanos y te consentimos con:<br />
+            Tinto - Agua - Aromatica
+          </p>
+          <p>
+            Ademas tenemos a la venta:<br />
+            Gaseosas - Cervezas
+          </p>
+        </div>
+
+        <div
+          class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 agendarCita"
+        >
+          <h2 class="c1">¡PIDE TU</h2>
+          <h2 class="c1">CITA!</h2>
+          <br />
+
+          <a href="#">
+            <button
+              type="button"
+              class="botonReservas"
+              data-toggle="modal"
+              data-target="#inicioSesion"
+            >
+              Reservar
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row promociones">
+      <div
+        class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 promociones1"
+      >
+        <h2>PROMOCIONES</h2>
+        <p class="promociones4">
+          ”Nada dice ‘estoy listo para una nueva vida’
+        </p>
+        <p class="promociones5">como un cambio de look”</p>
+      </div>
+
+      <div
+        class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+        id="carrusel-contenido"
+      >
+        <div id="carrusel-caja">
+          <div class="carrusel-elemento promocion1">
+            <p class="textoPromocion1">
+              ¡Si es tu cumpleaños recibe un 50% de descuento!
+            </p>
+          </div>
+          <div class="carrusel-elemento promocion2">
+            <p class="textoPromocion2">¡Participa en las diferentes rifas!</p>
+          </div>
+          <div class="carrusel-elemento promocion3">
+            <p class="textoPromocion3">
+              ¡Por cada 4 cortes el quinto será gratis!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+</main>
+
+<div class="wrapper">
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+<div class="item">5</div>
+<div class="item">6</div>
+</div>
+
+<!--
+
+<div  class="horariosBarberHouse">
+<h3>NUESTRAS PUERTAS ESTÁN ABIERTAS</h3>
+<h3>¡Te estamos esperando!</h3><br>
+<p>Lun - Vier 7:00 a.m. - 8:00 p.m.</p>
+<p>Sab - Dom 8:00 a.m - 6:00 p.m.</p><br>
+</div>
+
+<div class="mapaBarberHouse">
+<div class="mapaBarberHouseBorde">
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63458.37022892201!2d-75.61623100299822!3d6.244199978653946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e44299b62afc923%3A0xac5109839f285794!2sBARBER%20HOUSE%20MAZZEO!5e0!3m2!1ses!2sco!4v1650460519660!5m2!1ses!2sco"
+    width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div> -->
+
+{% endblock %}
