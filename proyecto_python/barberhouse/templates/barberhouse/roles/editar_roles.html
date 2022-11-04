@@ -1,0 +1,27 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+
+{% if messages %}
+    {% for message in messages %}       
+        <div class="alert alert-{% if message.tags != 'error' %}{{ message.tags }}{% elif message.tags == 'error' %}danger{% endif %}" role="alert">{{ message }}</div>    
+    {% endfor %}
+{% endif %}
+
+<br><br><br><br><br><br><br><br><br>
+
+<h1>EDITAR Rol- <strong>{{ datos.nombre_rol }}</strong> </h1>
+
+<form style="text-align:center;" action="{% url 'barberhouse:actualizar_Rol' %}" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id" value="{{ datos.id }}"/>
+    
+    <label for="">Nombre Rol</label><br />
+    <input type="text" class="form-control" name="Nombre" style="width:70%; margin-left: auto; margin-right:auto;"
+    value="{{ datos.nombre_rol }}"><br/>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}

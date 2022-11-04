@@ -1,0 +1,52 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+
+
+<h1>CREAR USUARIO</h1>
+
+<form style="text-align:center;" action="{% url 'barberhouse:guardar_usuario' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="">Cedula</label><br />
+    <input type="number" class="form-control" name="cedula_usuario" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Nombre</label><br />
+    <input type="text" class="form-control" name="nombre" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Apellido</label><br />
+    <input type="text" class="form-control" name="apellido" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Fecha de nacimiento</label><br />
+    <input type="date" class="form-control" name="fecha_nacimiento" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Rol</label><br />
+    <select class="form-control" name="rol" style="width:70%; margin-left: auto; margin-right:auto;">
+
+        {% if datos %}
+            
+            {% for registro in datos %}
+                
+                <option value="{{ registro.id }}">{{ registro.nombre_rol }}</option>
+                
+            {% endfor %}
+
+        {% else %}
+            <h1>No hay datos</h1>
+        {% endif %}
+    
+    </select><br/>
+
+    <label for="">Foto</label><br />
+    <input type="file" class="form-control" name="foto" style="width:70%; margin-left: auto; margin-right:auto;" accept="image/*"><br/>
+
+    <label for="">Correo</label><br />
+    <input type="email" class="form-control" name="correo" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Clave</label><br />
+    <input type="password" class="form-control" name="clave" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}

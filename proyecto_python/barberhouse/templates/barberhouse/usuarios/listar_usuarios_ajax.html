@@ -1,0 +1,63 @@
+{% if page_obj %}
+
+
+    
+<table border="1" width="100%" class="table">
+    <thead>
+        <tr>
+            <td>Cedula Usuario</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Fecha Nacimiento</td>
+            <td>CORREO</td>
+            <td>ROL</td>
+            <td>EDITAR</td>
+            <td>ELIMINAR</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for registro in datos %}
+        <tr>
+            <td>{{ registro.cedula_usuario }}</td>
+            <td>{{ registro.nombre }}</td>
+            <td>{{ registro.apellido }}</td>
+            <td>{{ registro.fecha_nacimiento }}</td>
+            <td>{{ registro.correo }}</td>
+            <td>{{ registro.rol }}</td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'barberhouse:editar_usuario' registro.cedula_usuario %}"> editar</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" onclick="confirmarEliminar('{% url 'barberhouse:eliminar_usuario' registro.cedula_usuario %}')";> eliminar</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item {% if not datos.has_previous %} disabled {% endif %}">
+            
+            <a class="page-link" {% if datos.has_previous %} href="?page={{ datos.previous_page_number }} " {% endif %}  >Anterior</a>
+            
+        </li>
+        {% for i in "d"|rjust:datos.paginator.num_pages|make_list %}
+
+        <li class="page-item {% if forloop.counter == datos.number %} active {% endif %}"><a class="page-link" aria-current="page " href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+
+        {% endfor %}
+
+        <li class="page-item {% if not datos.has_next %} disabled {% endif %} ">
+            <a class="page-link" {% if datos.has_next %} href="?page={{ datos.next_page_number }}" {% endif %} >siguiente</a>
+        </li>
+    </ul>
+</nav>
+
+{% else %}
+    <h1>No hay datos</h1>
+{% endif %}
+
+{% endblock %}

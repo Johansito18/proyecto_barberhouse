@@ -1,0 +1,28 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body %}
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
+<h1>EDITAR PROMOCION - <strong>{{ datos.nombre_promocion }}</strong> </h1>
+
+<form style="text-align:center;" action="{% url 'barberhouse:actualizar_promocion' %}" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id" value="{{ datos.id }}"/>
+
+    <label for="">Nombre</label><br />
+    <input type="text" class="form-control" name="nombre_promocion" style="width:70%; margin-left: auto; margin-right:auto;" value="{{ datos.nombre_promocion }}"><br/>
+
+    <label for="">Fecha inicial</label><br />
+    <input type="datetime-local" class="form-control" name="fecha_inicio" style="width:70%; margin-left: auto; margin-right:auto;" value="{{ datos.fecha_inicio|date:'Y-m-d H:i:s' }}"><br/>
+
+    <label for="">Fecha final</label><br />
+    <input type="datetime-local" class="form-control" name="fecha_fin" style="width:70%; margin-left: auto; margin-right:auto;" value="{{ datos.fecha_fin|date:'Y-m-d H:i:s' }}"><br/>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock  %}

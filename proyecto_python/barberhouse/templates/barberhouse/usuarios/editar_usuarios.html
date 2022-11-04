@@ -1,0 +1,53 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+
+<h1>EDITAR USUARIO - <strong>{{ usuario.nombre }}</strong> </h1>
+
+<form style="text-align:center;" action="{% url 'barberhouse:actualizar_usuario' %}" method="post">
+    {% csrf_token %}
+
+    <label for="">Cedula</label><br />
+    <input type="number" class="form-control" name="cedula_usuario" value="{{ usuario.cedula_usuario }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Nombre</label><br />
+    <input type="text" class="form-control" name="nombre" value="{{ usuario.nombre }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Apellido</label><br />
+    <input type="text" class="form-control" name="apellido" value="{{ usuario.apellido }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Fecha de nacimiento</label><br />
+    <input type="date" class="form-control" name="fecha_nacimiento" value="{{ usuario.fecha_nacimiento|date:'Y-m-d' }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Rol</label><br />
+    <select class="form-control" name="rol" value="{{ roles.nombre_rol }}" style="width:70%; margin-left: auto; margin-right:auto;">
+
+        {% if roles %}
+            
+            {% for registro in roles %}
+                
+                <option value="{{ registro.id }}">{{ registro.nombre_rol }}</option>
+                
+            {% endfor %}
+
+        {% else %}
+            <h1>No hay datos</h1>
+        {% endif %}
+    
+    </select><br/>
+    <p>Foto actual</p>
+    <span><img src="{{ usuario.foto.url }}" width="3%"/></span><br/>
+
+    <label for="">Deje en blanco para mantener, o asigne una nuevo.<br></label><br />
+    <input type="file" class="form-control" name="foto" style="width:70%; margin-left: auto; margin-right:auto;" accept="image/*" value="{{ usuario.foto.url }}"><br/>
+
+    <label for="">Correo</label><br />
+    <input type="email" class="form-control" name="correo" value="{{ usuario.correo }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Clave</label><br />
+    <input type="password" class="form-control" name="clave" value="{{ usuario.clave }}" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}

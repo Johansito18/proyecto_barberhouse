@@ -1,0 +1,54 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+<br/><br/>
+<br/>
+<h1>CREAR SERVICIO</h1>
+
+<form style="text-align:center;" action="{% url 'barberhouse:guardar_servicio' %}" method="post">
+    {% csrf_token %}
+
+    <label for="">Nombre</label><br />
+    <input type="text" class="form-control" name="nombre_servicio" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Precio</label><br />
+    <input type="number" class="form-control" name="precio" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+    <label for="">Promocion</label><br />
+    <select class="form-control" name="promocion" style="width:70%; margin-left: auto; margin-right:auto;">
+
+        {% if promocion %}
+            
+            {% for registro in promocion %}
+                
+                <option value="{{ registro.id }}">{{ registro.nombre_promocion }}</option>
+                
+            {% endfor %}
+
+        {% else %}
+            <h1>No hay datos</h1>
+        {% endif %}
+    
+    </select><br/>
+    
+    <label for="">Empleado</label><br />
+    <select class="form-control" name="empleado" style="width:70%; margin-left: auto; margin-right:auto;">
+
+        {% if empleado %}
+            
+            {% for registro in empleado %}
+                
+                <option value="{{ registro.cedula_usuario }}">{{ registro.nombre }}</option>
+                
+            {% endfor %}
+
+        {% else %}
+            <h1>No hay datos</h1>
+        {% endif %}
+    
+    </select><br/>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+{% endblock %}

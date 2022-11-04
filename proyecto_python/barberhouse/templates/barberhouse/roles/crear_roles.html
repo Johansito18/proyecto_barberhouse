@@ -1,0 +1,31 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+
+{% if messages %}
+    {% for message in messages %}       
+        <div class="alert alert-{% if message.tags != 'error' %}{{ message.tags }}{% elif message.tags == 'error' %}danger{% endif %}" role="alert">{{ message }}</div>    
+    {% endfor %}
+{% endif %}
+
+<br><br><br><br><br><br>
+
+<body>
+    <main>
+        <section>
+            <fieldset>
+                <h1>CREAR ROL</h1>
+                <form style="text-align:center;" action="{% url 'barberhouse:guardar_Rol' %}" method="post">
+                    {% csrf_token %}
+
+                    <label for="">Nombre Rol</label><br />
+                    <input type="text" class="form-control" name="Nombre" ><br /><br />
+                        
+                    <button type="submit" class="btn btn-primary"> Guardar </button>
+                </form>
+            </fieldset>
+        </section>
+    </main>
+</body>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'barberhouse/base.html' %}
+
+{% block body  %}
+
+<div class="citasFormulario">
+    <h1>AGENDAR CITA</h1>
+
+    <form class="formularioC form-control container"  action="{% url 'barberhouse:guardar_cita' %}" method="post">
+        {% csrf_token %}
+
+        <label for="">Fecha de la cita</label><br />
+        <input type="datetime-local" class="form-control" name="fecha_cita" style="width:70%; margin-left: auto; margin-right:auto;"><br/>
+
+        
+        <label for="">Cliente</label><br />
+        <select class="form-control" name="cliente" style="width:70%; margin-left: auto; margin-right:auto;">
+
+            {% if cliente %}
+                
+                {% for registro in cliente %}
+                
+                    {% if registro.rol.nombre_rol == "Cliente" %}
+                
+                    <option value="{{ registro.cedula_usuario }}">{{ registro.nombre }}</option>
+                    
+                    {% endif %}
+                    
+                {% endfor %}
+
+            {% else %}
+                <h1>No hay datos</h1>
+            {% endif %}
+        
+        </select><br/>
+
+        <label for="">Empleado</label><br />
+        <select class="form-control" name="empleado" style="width:70%; margin-left: auto; margin-right:auto;">
+
+            {% if empleado %}
+                
+                {% for registro in empleado %}
+                
+                    {% if registro.rol.nombre_rol == "Barbero" %}
+                
+                    <option value="{{ registro.cedula_usuario }}">{{ registro.nombre }}</option>
+                    
+                    {% endif %}
+                    
+                {% endfor %}
+
+            {% else %}
+                <h1>No hay datos</h1>
+            {% endif %}
+        
+        </select><br/>
+        
+        <label for="">Servicio</label><br />
+        <div style="width:70%; margin-left: auto; margin-right:auto;"   >
+
+            {% if servicio %}
+
+                {% for registro in servicio %}
+
+                    <div class="form-check" >
+                        <label class="form-check-label" for="" >{{ registro.nombre_servicio }}</label>
+                        <input class="form-check-input" type="checkbox" name="servicio" value="{{ registro.id }}"/>         
+                    </div>
+                    
+                {% endfor %}
+
+            {% else %}
+                <h1>No hay datos</h1>
+            {% endif %} 
+        </div>
+
+        <button type="submit" class="buttonCita btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+
+{% endblock %}

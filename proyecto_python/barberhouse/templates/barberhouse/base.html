@@ -6,12 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.semanticui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'barberhouse/css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'barberhouse/css/tablas.css' %}" />
+    <link rel="stylesheet" href="{% static 'barberhouse/css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'barberhouse/css/reservasCitas.css' %}" />
+
+    
+
+    
 
     <title>barberhouse</title>
   </head>
@@ -48,32 +61,159 @@
             </div>
 
             <!-- elementos del menu colapsable -->
-
+            
             <div class="collapse navbar-collapse barra" id="menu">
               <ul class="navbar-nav ms-auto">
+                {% if request.session.logueo.3 == "Admin" %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'barberhouse:listarUsuarios' %}" style="color: white">Usuarios</a>
+                  <a class="nav-link" href="{% url 'barberhouse:listarUsuarios' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Usuarios
+                    </button>
+                  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'barberhouse:listarServicios' %}" style="color: white">Servicios</a>
+                  <a class="nav-link" href="{% url 'barberhouse:Perfil_Usuario' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      perfil  
+                    </button>
+                  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'barberhouse:listarCitas' %}" style="color: white">Citas </a>
+                  <a class="nav-link" href="{% url 'barberhouse:listarRoles' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                    Roles  
+                    </button>
+                  </a>
+                </li> 
+                {% endif %}
+                {% if request.session.logueo.3 == "Admin" or request.session.logueo.3 == "Barbero" %}
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'barberhouse:listarServicios' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Servicios  
+                    </button>
+                  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'barberhouse:listarPromociones' %}" style="color: white">Promociones</a>
+                  <a class="nav-link" href="{% url 'barberhouse:listarCitas' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Citas  
+                    </button>
+                  </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'barberhouse:listarPromociones' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Promociones  
+                    </button>
+                  </a>
+                </li>        
+                {% endif %}
+                {% if request.session.logueo and request.session.logueo.3 == "Cliente" %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'barberhouse:listarCitas' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Citas  
+                    </button>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'barberhouse:listarServicios' %}" style="color: white">
+                    <button
+                      class="buttonNav"
+                      type="button"
+                    >
+                      Servicios  
+                    </button>
+                  </a>
+                </li>
+                {% endif %}
+
+                <span class="d-flex" style="color: white;">
+                  {% if request.session.logueo %}
+                      
+                      <a href="{% url 'barberhouse:login_cerrar' %}">
+                        
+                        <button
+                          class="buttonLogin"
+                          type="button"
+                        >
+                          LOGOUT  
+                        </button>
+                      </a>
+                  {% else %}
+                      <a href="{% url 'barberhouse:loginForm' %}">
+                        <button
+                          class="buttonLogin"
+                          type="button"
+                        >
+                          LOGIN  
+                        </button>
+                      </a>
+                  
+                  {% endif %}
+                </span>
+                
               </ul>
+              
             </div>
           </div>
         </nav>
       </header>
     </header>
 
+    {% if messages %}
+        {% for i in messages %}
+            <div class="alert alert-{% if i.tags != 'error' %}{{ i.tags }}{% elif i.tags == 'error' %}danger{% endif %}"
+            role="alert">{{i}}</div>
+        {% endfor %}
+    {% endif %}
+
+    
+
     {% block body %}
     
     {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'barberhouse/js/jquery-3.6.1.min.js' %}"></script>
+    <script src="{% static 'barberhouse/js/funciones.js' %}"></script>
+
+    <script>
+      $(document).ready(function() {
+          $('#example').DataTable({             
+              dom: 'i'
+              //dom: 'lfrtip'
+              //dom:  'lrtip' //ejemplo 1 - sin cuadro de busqueda
+              //dom: '<"wrapper"flipt>' // ejemplo 2 - establecemos un contenedor para las opciones  
+              //dom: '<lf<t>ip>'  //ejemplo 3 - arriba : Longitud y cuadro de busqueda, abajo: información y paginación, la Tabla en el centro 
+             //dom: '<"top"i>rt<"bottom"flp><"clear">' //ejemplo 4    
+          });  
+       });   
+    </script>
+
   </body>
 </html>
 

@@ -13,10 +13,12 @@ class Usuarios(models.Model):
     apellido = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
     correo = models.EmailField()
-    contraseña = models.CharField(max_length=20)
-    rol = models.ForeignKey(Rol, on_delete= models.DO_NOTHING)
+    clave = models.CharField(max_length=20)
+    rol = models.ForeignKey(Rol, on_delete= models.DO_NOTHING, default=3)
+    foto = models.ImageField(upload_to = 'barberhouse/fotos', default = 'barberhouse/fotos/default.png')
+
     
-    def __str__(self):
+    def __str__(self):          
         return f"{self.nombre}"
     
 class Promociones(models.Model):
@@ -38,8 +40,16 @@ class Servicios(models.Model):
     
 class Citas(models.Model):
     fecha_cita = models.DateTimeField()
-    cliente = models.ForeignKey(Usuarios, on_delete= models.DO_NOTHING)
-    servicio = models.ForeignKey(Servicios, on_delete= models.DO_NOTHING)
+    usuarioCliente = models.ForeignKey(Usuarios, on_delete= models.DO_NOTHING, related_name = "usuarioCliente")
+    usuarioEmpleado = models.ForeignKey(Usuarios, on_delete= models.DO_NOTHING, related_name = "usuarioEmpleado")
+    
     
     def __str__(self):
-        return f"{self.fecha_cita}"
+        return f"{self.id} - {self.fecha_cita}"
+
+class ServiciosCitas(models.Model):
+    servicio = models.ForeignKey(Servicios, on_delete= models.DO_NOTHING)
+    cita = models.ForeignKey(Citas, on_delete= models.DO_NOTHING)
+
+    def __str__(self):
+        return f"serv: {self.servicio} cita: {self.cita}"

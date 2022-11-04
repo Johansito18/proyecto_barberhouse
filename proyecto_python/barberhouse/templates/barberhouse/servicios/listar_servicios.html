@@ -2,12 +2,88 @@
 
 {% block body  %}
 
-{% if messages %}
-    {% for message in messages %}       
-        <div class="alert alert-{% if message.tags != 'error' %}{{ message.tags }}{% elif message.tags == 'error' %}danger{% endif %}" role="alert">{{ message }}</div>    
-    {% endfor %}
-{% endif %}
+{% if datos %}
+    <h1>SERVICIOS</h1>
+    <div class="listado">
+        <input class="form-control me-2 buscar" type="search" name="buscar" id="buscar" placeholder="Buscar" aria-label="Search" value="{{ Datos }}" onkeyup="buscarA('{% url 'barberhouse:Buscar_usuario' %}');">
+        {% csrf_token %}
+        <table id="example" class="ui celled table " style="width:100%">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>PRECIO</td>
+                    <td>PROMOCION</td>
+                    <td>EMPLEADO</td>
+                    <td>EDITAR</td>
+                    <td>ELIMINAR</td>
+                </tr>
+            </thead>
+            <tbody>
 
-<h1>Servicios</h1>
+                {% for registro in datos %}
+                <tr>
+                    <td>{{ registro.id }}</td>
+                    <td>{{ registro.nombre_servicio }}</td>
+                    <td>{{ registro.precio }}</td>
+                    <td>{{ registro.promocion }}</td>
+                    <td>{{ registro.empleado }}</td>
+                    <td>
+                        <a class="btn btn-info botones" href="{% url 'barberhouse:editar_servicio' registro.id %} ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger botones" onclick="confirmarEliminar('{% url 'barberhouse:eliminar_servicio' registro.id %}')"; >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path
+                            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+    
+                {% endfor %}
+            </tbody>
+            
+
+        </table>
+        <a class="btn btn-primary crear botones" href="{% url 'barberhouse:crear_servicio' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item {% if not datos.has_previous %} disabled {% endif %}">
+                    
+                    <a class="page-link" {% if datos.has_previous %} href="?page={{ datos.previous_page_number }} " {% endif %}  >Anterior</a>
+                    
+                </li>
+                {% for i in "d"|rjust:datos.paginator.num_pages|make_list %}
+
+                <li class="page-item {% if forloop.counter == datos.number %} active {% endif %}"><a class="page-link" aria-current="page " href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+
+                {% endfor %}
+
+                <li class="page-item {% if not datos.has_next %} disabled {% endif %} ">
+                    <a class="page-link" {% if datos.has_next %} href="?page={{ datos.next_page_number }}" {% endif %} >siguiente</a>
+                </li>
+            </ul>
+        </nav> 
+    </div>
+
+{% else %}
+    <h1>No hay datos</h1>
+{% endif %}
 
 {% endblock %}

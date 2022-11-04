@@ -1,0 +1,18 @@
+{% extends 'barberhouse/base.html' %}
+{% block body  %}
+
+<h1>Recuperar contraseña</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label for="id_email"> Correo</label>
+    <input type="text">
+    <button type="submit">enviar</button>
+    
+
+
+</form>
+
+{% endblock %}
+

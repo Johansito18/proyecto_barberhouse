@@ -11,14 +11,16 @@ h2,
 h3,
 button,
 a {
+    font-family: 'Playfair Display', serif;
+
     overflow-y: hidden;
 
 }
 
 
 .barra_navegacion {
-    background: linear-gradient(to right, black, #605851);
-    position: fixed;
+    background: linear-gradient(to right, black, #605851, black);
+
     width: 100%;
     display: flex;
 }
@@ -39,11 +41,34 @@ a {
     margin-top: 2%;
 }
 
-.holo {
-    display: flex;
-    justify-content: space-around;
+.buttonNav,.buttonLogin{
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    border: none;
+    outline: none;
+    color: white;
+    width: auto;
+    height: 40px;
+    transition: 0.3s;
+    font-size: 20px;
+}
+.buttonNav:hover{
+    border: solid white 2px;
+    border-radius: 5px;
+    transition: 0.3s;
 
 }
+.buttonLogin{
+    margin-top: 10px;
+}
+.buttonLogin:hover{
+    background-color: white;
+    color: black;
+    border: solid gray 2px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
 
 .inicioPag {
     background-image: url(../img/InicioImagen.jpeg);
@@ -51,12 +76,12 @@ a {
     background-size: cover;
     background-attachment: fixed;
     text-align: center;
-    height: 25em;
+    height: 22em;
     font-size: 40px;
 
     color: white;
     padding: 4%;
-    padding-top: 10%;
+    padding-top: 5%;
 }
 
 .inicioPag h1 {
@@ -66,10 +91,11 @@ a {
 
 .inicioPag p {
 
-    padding: 1%;
+    padding: 0.5%;
 }
 
-.botonUnete {
+.botonReservar {
+
     text-align: center;
     background-color: black;
     color: white;
@@ -83,305 +109,139 @@ a {
     margin-top: 5%;
 }
 
-.botonUnete:hover {
+.botonReservar:hover {
     color: black;
     background-color: white;
     border-color: black;
 }
 
-.servicios {
-    text-align: center;
-    background-color: black;
-    color: white;
-    height: 55em;
-    margin-top: 0%;
-    padding-bottom: 5%;
-    padding-top: 2%;
+
+.contenedorPromos {
+    background-color: rgb(0, 0, 0);
 
 }
 
-.servicios h2 {
-    font-size: 60px;
-}
-
-
-.servicontenedor {
-    background: url(../img/cortes.jpg);
+.contIzquierdoPromo {
+    background-image: url(../img/imagenPromo1.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    padding: 30px 0px 10px 0px;
-}
-
-.servicios2 {
-    padding-top: 5%;
-    border-right: #000 solid;
-
-    border-bottom: 0;
-    height: 700px;
-
-}
-
-.servicios2 h2 {
-    font-size: 60px;
-    padding-bottom: 5%;
-}
-
-.servicios2 p {
-    padding: 1%;
-    font-size: 40px;
-}
-
-
-.agendarCita {
-    /* background: radial-gradient(circle, #605851 0%, #000000  100%); */
-
-    height: 700px;
-
-    border-left: #000 solid;
-    border-bottom: 0;
-    color: white;
     text-align: center;
-    margin-bottom: 1%;
-    padding-top: 5%;
-}
-
-
-.agendarCita h2 {
-    font-size: 60px;
-}
-
-
-.botonReservas {
-    text-align: center;
-    background-color: black;
-    color: white;
-    width: 150px;
-    height: 80px;
-    font-size: 30px;
-    border-radius: 20px;
-    border-style: double;
-    border-color: white;
-    border-width: 10px;
-    margin-top: 5%;
-}
-
-.botonReservas:hover {
-    color: black;
-    background-color: white;
-    border-color: black;
-}
-
-
-#carrusel-caja {
-    -moz-animation: automatizacion 8s infinite linear;
-    -o-animation: automatizacion 8s infinite linear;
-    -webkit-animation: automatizacion 8s infinite linear;
-    animation: automatizacion 8s infinite linear;
-
-    -webkit-transition: all 0.75s ease;
-    -moz-transition: all 0.75s ease;
-    -ms-transition: all 0.75s ease;
-    -o-transition: all 0.75s ease;
-    transition: all 0.75s ease;
-
-    height: 100%;
-    width: 300%;
-
-}
-
-.promociones {
-    background-color: black;
-
-}
-
-.promociones1 {
-    background: url(../img/promocion1.png);
-    background-repeat: no-repeat;
-    background-size: 100% 500px;
-
-    text-align: center;
-
     height: 500px;
     color: white;
-    float: left;
     margin-top: 1%;
-
+    margin-bottom: 1%;
     border: #000 solid;
-
-
 }
-
-.promociones1 h2 {
+.contIzquierdoPromo h2 {
     font-size: 60px;
     padding-top: 9%;
     padding-bottom: 5%;
-
-
 }
-
-.promociones1 p {
-
+.contIzquierdoPromo p {
     font-size: 40px;
 }
 
 
 
-.promociones5 {
-    padding-top: 1%;
-}
+.contDerechoPromo {
+    margin-top: 1%;
+    margin-bottom: 1%;
 
+    border: #000 solid;
+
+    height: 500px;
+
+}
+.contenidoCarrusel{
+    width: 100%;
+}
 .promocion1 {
+    background-image: url(../img/imagenPromo2.jpeg);
+
     background-repeat: no-repeat;
     background-size: cover;
-    height: 42em;
+    height: 500px;
+    width: 100%;
+    margin-left: 0;
+
 }
 
-.textoPromocion1 {
-    background-image: url(../img/imagenPromo1.png);
+.promocion1 p {
     color: white;
     font-size: 40px;
     text-align: center;
     padding-top: 10%;
+
 }
 
 .promocion2 {
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 43.7em;
-}
-
-.textoPromocion2 {
-    background-image: url(../img/imagenPromo2.jpeg);
-    color: white;
-    font-size: 40px;
-    text-align: center;
-    padding-top: 57%;
-}
-
-.promocion3 {
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 14.6em;
-}
-
-.textoPromocion3 {
     background-image: url(../img/imagenPromo3.jpeg);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+}
+
+.promocion2 p {
     color: white;
     font-size: 40px;
     text-align: center;
     padding-top: 10%;
-}
-
-#carrusel-contenido {
-    padding-top: 1%;
-
-    margin-bottom: 1%;
-
-    overflow: hidden;
-    text-align: left;
-
-    height: 520px;
-    border: #000 solid;
 
 }
 
+.promocion3 {
+    background-image: url(../img/registro.png);
 
-
-.carrusel-elemento {
-    float: left;
-    width: 33.333%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
 }
 
-@-moz-keyframes automatizacion {
-    0% {
-        margin-left: 0;
-    }
+.promocion3 p {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 10%;
 
-    30% {
-        margin-left: 0;
-    }
-
-    35% {
-        margin-left: -100%;
-    }
-
-    65% {
-        margin-left: -100%;
-    }
-
-    70% {
-        margin-left: -200%;
-    }
-
-    95% {
-        margin-left: -200%;
-    }
-
-    100% {
-        margin-left: 0;
-    }
 }
 
-@-webkit-keyframes automatizacion {
-    0% {
-        margin-left: 0;
-    }
 
-    30% {
-        margin-left: 0;
-    }
 
-    35% {
-        margin-left: -100%;
-    }
 
-    65% {
-        margin-left: -100%;
-    }
 
-    70% {
-        margin-left: -200%;
-    }
 
-    95% {
-        margin-left: -200%;
-    }
 
-    100% {
-        margin-left: 0;
-    }
-}
 
-@keyframes automatizacion {
-    0% {
-        margin-left: 0;
-    }
 
-    30% {
-        margin-left: 0;
-    }
 
-    35% {
-        margin-left: -100%;
-    }
 
-    65% {
-        margin-left: -100%;
-    }
 
-    70% {
-        margin-left: -200%;
-    }
 
-    95% {
-        margin-left: -200%;
-    }
 
-    100% {
-        margin-left: 0;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,13 +258,13 @@ a {
     }
 
     .inicioPag {
-        background-size: 100% 26em;
+        background-size: cover;
 
-        height: 26em;
+        height: 21em;
         font-size: 20px;
         color: white;
         padding: 2%;
-        padding-top: 30%;
+        padding-top: 10%;
     }
 
     .inicioPag p {
@@ -413,301 +273,180 @@ a {
         padding: 1%;
     }
 
-    .botonUnete {
+    .botonReservar {
 
-        width: 100px;
-        height: 50px;
+        width: 130px;
+        height: 70px;
         border-radius: 20px;
         border-style: double;
         border-color: white;
         border-width: 10px;
         margin-top: 5%;
     }
+        
+    .contenedorPromos p {
 
-    .servicontenedor {
-        background-position: 1fr;
-
-    }
-
-    .servicios {
-        height: 50em;
-    }
-
-    .servicios h2 {
         font-size: 20px;
     }
-
-    .servicios2 {
-        height: 350px;
-        border-bottom: #000 solid;
-
-    }
-
-
-
-    .servicios2 h2 {
-        font-size: 40px;
-        padding-bottom: 5%;
-    }
-
-    .servicios2 p {
-        padding: 1%;
-        font-size: 20px;
-    }
-
-    .agendarCita {
+    .contIzquierdoPromo,
+    .contDerechoPromo{
         height: 300px;
     }
 
-    .agendarCita h2 {
-        font-size: 40px;
-    }
-
-    .botonReservas {
-        width: 110px;
-        height: 60px;
-        font-size: 20px;
-        border-radius: 20px;
-    }
-
-    .promociones1 {
-        height: 350px;
-    }
-
-    .promociones1 h2 {
-        font-size: 40px;
-        padding-top: 9%;
-        padding-bottom: 5%;
-
-
-    }
-
-    .promociones1 p {
-
-        font-size: 20px;
-    }
-
-    #carrusel-contenido {
-
-        height: 340px;
-    }
-
-    .textoPromocion1,
-    .textoPromocion2,
-    .textoPromocion3 {
-
-        font-size: 30px;
-    }
-
+    
+    
     .promocion1,
     .promocion2,
     .promocion3 {
         background-position: center;
-        background-size: 100% 100%;
+        background-size: cover;
 
     }
 
+    .contenedorGal{
+        padding-left: 20px;
+    }
 }
 
-
-
-.wrapper {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 200px auto;
-    transform-style: preserve-3d;
-    animation: slider 5s linear reverse infinite;
-}
-
-.wrapper .item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+.contenedorGal{
     height: 100%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    padding-top: 15px;
+
+}
+.galeriaBarberHouse {
     text-align: center;
-    line-height: 200px;
-    font-size: 30px;
-    color: #fff;
-    user-select: none;
-    opacity: 0.6;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+}
+.items{
+    margin: 5px;
+    background-color: #03afff;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 400px;
+    position: relative;
+    cursor: pointer;
+    transition: all 200ms ease-out; 
+    justify-content: center;
+
+}
+.contenidoItems{
+    padding-top: 2%;
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(0, 0, 0,70%);
+    transition: all 200ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    padding-right: 5px;
+}
+.contenidoItems h2{
+    font-size: 40px;
+    color: white;
+}
+.contenidoItems p{
+    font-size: 20px;
+    color: white;
 }
 
-.wrapper .item:nth-of-type(1) {
-    background: red;
-    transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 200px);
+.items:hover > .contenidoItems{
+    transform: scale(1.02);
+    opacity: 1;
+    visibility: visible;
 }
 
-.wrapper .item:nth-of-type(2) {
-    background: blue;
-    transform: rotate3d(0, 1, 0, 60deg) translate3d(0, 0, 200px);
+.logos{
+    color: white;
+    text-decoration: none;
+}
+.logos:hover{
+    color: gray;
 }
 
-.wrapper .item:nth-of-type(3) {
-    background: orange;
-    transform: rotate3d(0, 1, 0, 120deg) translate3d(0, 0, 200px);
+.itemGaleria1  {
+    background-image: url(../img/corte1.jpeg);    
 }
 
-.wrapper .item:nth-of-type(4) {
-    background: purple;
-    transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 200px);
+.itemGaleria2  {
+
+    background-image: url(../img/corte2.jpeg);
 }
 
-.wrapper .item:nth-of-type(5) {
-    background: green;
-    transform: rotate3d(0, 1, 0, 240deg) translate3d(0, 0, 200px);
+.itemGaleria3  {
+
+    background-image: url(../img/corte3.jpeg);
 }
 
-.wrapper .item:nth-of-type(6) {
-    background: deeppink;
-    transform: rotate3d(0, 1, 0, 300deg) translate3d(0, 0, 200px);
+.itemGaleria4  {
+    background-image: url(../img/corte4.jpeg);
 }
 
-@keyframes slider {
-    0% {
-        transform: rotate3d(1, 0, 0, -20deg) rotateY(0deg);
-    }
+.itemGaleria5  {
+    background-image: url(../img/corte5.jpeg);
+}
 
-    100% {
-        transform: rotate3d(1, 0, 0, -20deg) rotateY(360deg);
-    }
+.itemGaleria6  {
+    background-image: url(../img/corte6.jpeg);
+}
+
+.itemGaleria7  {
+    background-image: url(../img/corte8.jpeg);
+}
+
+.itemGaleria8  {
+    background-image: url(../img/corte9.jpeg);
 }
 
 
 
-/*
 
 
 
-.logoInsta {
-    width: 100px;
-}
 
-.logoFace {
-    width: 50px;
-}
 
-.logoInstaPequeño {
-    width: 90px;
-}
 
-.logoFacePequeño {
-    width: 45px;
-}
 
 .horariosBarberHouse {
     text-align: center;
-    width: 50%;
-    height: 450px;
+    height: 300px;
     padding-top: 2%;
     padding-left: 5%;
-    background-color: #A8a69f;
-    float: left;
-    color: #000;
+    background: linear-gradient(to right, black, #605851);
+
+    color: rgb(255, 255, 255);
 }
 
 .horariosBarberHouse h3 {
-    font-size: 50px;
-}
-
-.horariosBarberHouse p {
     font-size: 30px;
 }
 
+.horariosBarberHouse p {
+    font-size: 20px;
+}
+
 .mapaBarberHouse {
-    float: right;
-    width: 50%;
-    height: 450px;
-    float: right;
+    height: 300px;
     text-align: center;
-    background-color: #A8a69f;
+    background: linear-gradient(to right, #605851,black);   
     color: #000;
     font-size: x-large;
-    padding-top: 40px;
-    padding-left: 90px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mapaBarberHouseBorde {
-    border-color: black;
+    border-color: gray;
     border-width: 10px;
-    width: 530px;
-    height: 375px;
-    margin-left: 10%;
+    width: 430px;
+    height: 230px;
     border-style: double;
 }
-
-.modal-content {
-    background-color: rgb(255, 255, 255, 50%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    text-align: center;
-    height: 30em;
-    width: 25%;
-    font-size: x-large;
-    color: rgb(0, 0, 0);
-    margin-left: 1250px;
-    margin-top: 100px;
-    position: fixed;
-
-}
-
-#inicioSesion {
-    float: right;
-    text-align: center;
-    width: 600px;
-    height: 790px;
-    overflow-y: hidden;
-}
-
-.inputsIniciarSesion {
-    width: 70%;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255, 60%);
-}
-
-.inputsIniciarSesion::placeholder {
-    color: #000;
-}
-
-.modal-dialog {
-    align-items: center;
-    flex-wrap: wrap;
-
-}
-
-.login {
-    text-align: center;
-    background-color: black;
-    color: white;
-    width: 150px;
-    height: 60px;
-    font-size: large;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #605851;
-
-}
-
-#botonIniciarSesion {
-    background-color: black;
-    color: white;
-    border: solid black 1px;
-}
-
-#botonRegistrarse {
-    background-color: black;
-    color: white;
-    border: solid black 1px;
-    margin-top: 2%;
-    
-}
-.botonCerrar{
-    background-color: rgb(255, 255, 255,0%);
-    border-color: rgb(255, 255, 255,0%);
-    width: 10%;
-    font-size: 150%;
-    margin-left: 90%;
-} */
